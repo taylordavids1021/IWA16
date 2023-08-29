@@ -69,8 +69,8 @@ const MONTHS = [
   
     const createHtml = (athlete) => {
 
-    const  {firstName, surname, id, races} = athlete
-    const  date = new Date(races[races.length-1].date)
+    const {firstName, surname, id, races} = athlete
+    const date = new Date(races[races.length-1].date)
     const day = date.getDate();
     const month = date.getMonth();
     const year = date.getFullYear();
@@ -78,7 +78,7 @@ const MONTHS = [
     // time of races
     const time = races[races.length -1].time;
 
-    const sumTime = time.reduce((accumulator, currentValue) => accumulator + currentValue,0);
+    const sumTime = time.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
     
     // create the elements
     const section = document.querySelector('section')
@@ -87,7 +87,7 @@ const MONTHS = [
     section.appendChild(heading2)
 
     const dList = document.createElement('dl')
-    section.appendChild(dl)
+    section.appendChild(dList)
 
     const dtList = document.createElement('dt')
     dtList.textContent = `Athlete: ${firstName} ${surname}`
@@ -101,10 +101,10 @@ const MONTHS = [
     const dtList4 = document.createElement('dt')
     dtList4.textContent = `Total Time: 00:${sumTime}`
   
-    dl.appendChild(dList)
-    dl.appendChild(dtList2)
-    dl.appendChild(dtList3)
-    dl.appendChild(dtList4)
+    dList.appendChild(dtList)
+    dList.appendChild(dtList2)
+    dList.appendChild(dtList3)
+    dList.appendChild(dtList4)
   }
   createHtml(data.response.data.NM372)
   createHtml(data.response.data.SV782)
